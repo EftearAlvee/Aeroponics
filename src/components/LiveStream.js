@@ -10,13 +10,14 @@ export default function LiveStream() {
   });
 
   useEffect(() => {
-    const streamRef = ref(database, 'stream');
+    const streamRef = ref(database, 'video');
     
     const unsubscribe = onValue(streamRef, (snapshot) => {
       const data = snapshot.val();
+      console.log(data);
       if (data) {
         setStreamData({
-          image: data
+          image: data.stream
         });
       } else {
         setStreamData({
