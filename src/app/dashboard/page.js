@@ -19,6 +19,7 @@ export default function Dashboard() {
     phRange: 0,
     pumpCycle: { onFor: 0, offFor: 0 },
     nutrientPumpRunningTime: 0,
+    lightCycle: { onFor: 0, offFor: 0 },
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -308,8 +309,57 @@ export default function Dashboard() {
                     <small className="text-gray-500">Running Time</small>
                   </div>
                 </div>
+
+                {/* Light Timer Cycle */}
+                <div className="space-y-3">
+                  <label className="block text-sm font-medium text-gray-700">Light Timer Cycle</label>
+                  <div className="flex gap-3">
+                    <select
+                      value={controls.lightCycle.onFor}
+                      onChange={(e) => handleControlChange('lightCycle', 'onFor', e.target.value)}
+                      className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-black placeholder-gray-400"
+                    >
+                      <option value="">Select On Time</option>
+                      <option value="30">30 seconds</option>
+                      <option value="60">1 minute</option>
+                      <option value="120">2 minutes</option>
+                      <option value="300">5 minutes</option>
+                      <option value="600">10 minutes</option>
+                      <option value="900">15 minutes</option>
+                      <option value="1200">20 minutes</option>
+                      <option value="1800">30 minutes</option>
+                      <option value="2700">45 minutes</option>
+                      <option value="3600">1 hour</option>
+                      <option value="5400">1.5 hours</option>
+                      <option value="7200">2 hours</option>
+                      <option value="9000">2.5 hours</option>
+                      <option value="10800">3 hours</option>
+                    </select>
+                    <select
+                      value={controls.lightCycle.offFor}
+                      onChange={(e) => handleControlChange('lightCycle', 'offFor', e.target.value)}
+                      className="w-full px-4 py-2 rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors text-black placeholder-gray-400"
+                    >
+                      <option value="">Select Off Time</option>
+                      <option value="30">30 seconds</option>
+                      <option value="60">1 minute</option>
+                      <option value="120">2 minutes</option>
+                      <option value="300">5 minutes</option>
+                      <option value="600">10 minutes</option>
+                      <option value="900">15 minutes</option>
+                      <option value="1200">20 minutes</option>
+                      <option value="1800">30 minutes</option>
+                      <option value="2700">45 minutes</option>
+                      <option value="3600">1 hour</option>
+                      <option value="5400">1.5 hours</option>
+                      <option value="7200">2 hours</option>
+                      <option value="9000">2.5 hours</option>
+                      <option value="10800">3 hours</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              
+
               {/* Add submit button */}
               <div className="mt-6 flex justify-end">
                 <button
