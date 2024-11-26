@@ -28,14 +28,19 @@ export default function Dashboard() {
 
   // Fetch initial data from Firebase
   useEffect(() => {
-    const metricsRef = ref(database, 'metrics');
+    const metricsRef = ref(database, 'SensorData');
     const controlsRef = ref(database, 'systemControls');
 
     // Listen for metrics updates
     const metricsUnsubscribe = onValue(metricsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        setMetrics(data);
+        setMetrics({
+          temperature: data.Temperature || 0,
+          humidity: data.Humidity || 0,
+          pH: data.PHLevel || 0,
+          waterLevel: data.WaterLevel || 0
+        });
       }
     });
 
